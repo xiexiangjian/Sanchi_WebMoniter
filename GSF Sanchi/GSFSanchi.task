@@ -1,0 +1,149 @@
+{
+  "name": "GSFSanchi",
+  "base_class": "ENVITaskFromProcedure",
+  "routine": "GSF_Sanchi",
+  "display_name": "SanchiKit",
+  "description": "This task exports an Sanchi raster from Vis-NIR image to an ENVI-format file.",
+  "schema":"envitask_3.3",
+  "revision":"1.0.0",
+  "parameters": [
+    {
+    "name": "INPUT_RASTER",
+    "display_name": "Input Raster",
+    "type": "ENVIRASTER",
+    "direction": "input",
+    "required": true,
+    "description": "Select a Vis-NIR image."
+    },
+    {
+    "name": "DEM_RASTER",
+    "display_name": "DEM Raster",
+    "type": "ENVIRASTER",
+    "direction": "input",
+    "required": false,
+    "description": "Select a DEM image."
+    },
+    {
+    "name": "Urban_RASTER",
+    "display_name": "Built-in Mask",
+    "type": "ENVIRASTER",
+    "direction": "input",
+    "required": false,
+    "description": "Select a Built-in Mask image."
+    },
+    {
+      "name":"Apply_QUAC",
+      "display_name":"Quac",
+      "type":"bool",
+      "direction":"INPUT",
+      "required":true,
+      "description":"Apply QUAC or not.",
+      "Hidden": true,
+      "default":0
+    },
+    {
+      "name":"NIR_BandNum",
+      "display_name":"NIR Band Number",
+      "type":"byte",
+      "direction":"INPUT",
+      "required":true,
+      "default":5,
+      "description":"Specify the NIR Band Number"
+    },
+    {
+      "name":"Threshold_SNRI",
+      "display_name":"SNRI Threshold",
+      "type":"String",
+      "direction":"INPUT",
+      "required":true,
+      "default":"0.0,0.55,0.65",
+      "description":"Specify SNRI threshold value, the default value is [0,0.5,0.55] for OLI."
+    },
+    {
+      "name":"Threshold_Max",
+      "display_name":"Max Threshold",
+      "type":"float",
+      "direction":"INPUT",
+      "required":true,
+      "min": 0.1,
+      "max": 0.2,
+      "default":0.12,
+      "description":"Specify the Maximum reflectivity of Sanchi Plantations."
+    },
+    {
+      "name":"Threshold_DEM",
+      "display_name":"Maximum Elevation",
+      "type":"float",
+      "direction":"INPUT",
+      "required":false,
+      "default":2500,
+      "description":"Specify the Maximum Elevation(/m) at which the Sanchi occurs."
+    },
+    {
+      "name":"Threshold_Slope",
+      "display_name":"Maximum Slope",
+      "type":"float",
+      "direction":"INPUT",
+      "required":false,
+      "default":25,
+      "description":"Specify the Maximum Slope(/m) at which the Sanchi occurs."
+    },
+    {
+      "name":"Epochs_Denoising",
+      "display_name":"Denoising Epochs",
+      "type":"Byte",
+      "direction":"INPUT",
+      "required":true,
+      "min": 0,
+      "max": 2,
+      "default":2,
+      "Hidden": true,
+      "description":"Specify an odd number with the smoothing epochs."
+    },
+    {
+    "name": "INPUT_FILE_SLI",
+    "display_name": "Input Spectral Library",
+    "type": "ENVISPECTRALLIBRARY",
+    "direction": "input",
+    "required": false,
+    "description": "Select a SLI FILE from Sanchi, Vegtation and Soil ROI."
+    },
+    {
+    "name": "Class_Raster",
+    "display_name": "Classfication Raster",
+    "type": "ENVIRASTER",
+    "direction": "output",
+    "hidden": true,
+    "required": false,
+    "description": "This is a reference to the Classfication raster of filetype ENVI."
+    },
+    {
+    "name": "SanChi_Raster",
+    "display_name": "Fraction Raster",
+    "type": "ENVIRASTER",
+    "direction": "output",
+    "required": false,
+    "uri_param": "SanChi_URI",
+    "description": "This is a reference to the output raster of filetype ENVI."
+    },
+    {
+    "name": "SanChi_URI",
+    "display_name": "Fraction Raster",
+    "type": "ENVIURI",
+    "direction": "input",
+    "required": false,
+    "auto_extension": ".dat",
+    "description": "Specify a string with the path and filename for OUTPUT_RASTER."
+    },
+    {
+    "name": "Statistics_URI",
+    "display_name": "Output Statistics",
+    "type": "ENVIURI",
+    "direction": "input",
+    "required": false,
+    "Hidden": true,
+    "auto_extension": ".txt",
+    "description": "Specify a string with the path and filename for Statistics."
+    }
+  ]
+}

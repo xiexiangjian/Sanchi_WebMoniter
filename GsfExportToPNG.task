@@ -1,0 +1,83 @@
+{
+    "name": "GsfGetFilePNG",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "GSFExportToPNG",
+    "display_name": "Export Raster To PNG",
+    "description": "This task returns the farthest north, south, east, and west points of a raster in latitude/longitude.",
+	  "schema":"envitask_3.3",
+	  "revision":"1.1.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+				    "display_name": "Input Raster",
+				    "type": "ENVIRASTER",
+				    "direction": "input",
+				    "required": true,
+            "description": "Specify a raster with a standard projection to retrieve bounding box."
+        },
+		    {
+				    "name": "rgb_raster",
+				    "display_name": "Rgb Raster",
+				    "type": "ENVIRASTER",
+				    "direction": "input",
+				    "required": false,
+		    		"description": "Specify a string with the path and filename for pngfile."
+		    },
+        {
+            "name": "bands",
+            "display_name": "Bands",
+            "type": "intArray",
+						"dimensions": "[*]",
+            "direction": "input",
+            "required": true,
+            "default": [3,2,1],
+            "description": "The bands indices for RGB."
+        },
+        {
+            "name": "data_ignore_value",
+            "display_name": "ignore value",
+            "type": "int",
+            "direction": "input",
+            "required": false,
+            "default": 0,
+            "description": "The ignore value for BG."
+        },
+        {
+            "name": "linear_percent",
+            "display_name": "Linear percent",
+            "type": "byte",
+            "direction": "input",
+            "required": false,
+            "default": 2,
+            "description": "The Linear percent for LinearPercentStretch."
+        },
+        {
+            "name": "valid_data_range",
+            "display_name": "Valid data range",
+            "type": "floatArray",
+						"dimensions": "[2]",
+            "direction": "input",
+            "required": false,
+            "default": [0,1],
+            "description": "The ignore value for BG."
+        },
+        {
+            "name": "ColorTableName",
+            "display_name": "Color Table Name",
+            "type": "string",
+            "direction": "input",
+            "required": false,
+            "default": "CB-Purples",
+            "description": "Color Table Name of the classification."
+        },
+		    {
+				    "name": "raster_pngfile",
+				    "display_name": "Output Pngfile",
+				    "type": "ENVIURI",
+				    "direction": "input",
+				    "required": false,
+				    "auto_extension": ".png",
+		    		"description": "Specify a string with the path and filename for pngfile."
+		    }
+    ]
+}

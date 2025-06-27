@@ -1,0 +1,50 @@
+{
+    "name": "BoundingBox",
+    "baseClass": "ENVITaskFromProcedure",
+    "routine": "boundingbox",
+    "displayName": "Lat/Lon Bounding Box",
+    "description": "This task returns the farthest north, south, east, and west points of a raster in latitude/longitude.",
+    "version": "5.3",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "displayName": "Input Raster",
+            "dataType": "ENVIRASTER",
+            "direction": "input",
+            "parameterType": "required",
+            "description": "Specify a raster with a standard projection to retrieve bounding box."
+        },
+        {
+            "name": "NORTH",
+            "displayName": "North",
+            "dataType": "DOUBLE",
+            "direction": "output",
+            "parameterType": "required",
+            "description": "The farthest north point."
+        },
+        {
+            "name": "SOUTH",
+            "displayName": "South",
+            "dataType": "DOUBLE",
+            "direction": "output",
+            "parameterType": "required",
+            "description": "The farthest south point."
+        },
+        {
+            "name": "WEST",
+            "displayName": "West",
+            "dataType": "DOUBLE",
+            "direction": "output",
+            "parameterType": "required",
+            "description": "The farthest west point."
+        },
+        {
+            "name": "EAST",
+            "displayName": "East",
+            "dataType": "DOUBLE",
+            "direction": "output",
+            "parameterType": "required",
+            "description": "The farthest east point."
+        }
+    ]
+}
